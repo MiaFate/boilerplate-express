@@ -1,3 +1,4 @@
+require("dotenv").config();
 let express = require('express');
 let app = express();
 //__dirname/public is mounted in /public dir of our website
@@ -10,7 +11,9 @@ app.get("/", (req, res) => {
   res.sendFile(absolutePath)
 })
 app.get("/json", (req, res) => {
-  res.json({ "message": "Hello json" })
+  let message = "Hello json"
+
+  res.json({ "message": `${process.env.MESSAGE_STYLE === "uppercase" ? message.toUpperCase() : message}` })
 })
 
 
