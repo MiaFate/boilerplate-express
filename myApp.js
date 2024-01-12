@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 require("dotenv").config();
 let express = require('express');
 let app = express();
@@ -31,18 +32,20 @@ app.get("/now", function(req, _, next) {
   next();
 }, function(req, res) {
   res.json({ "time": `${req.time}` })
+  /* eslint-disable */
+  /* eslint-disable */
 })
-
 
 app.get("/:word/echo", function(req, res) {
   const { word } = req.params;
   res.json({ "echo": `${word}` })
 })
 
+app.route("/name").get(function(req, res) {
+  const { first, last } = req.query
+  res.json({ name: `${first} ${last}` })
 
-
-
-
+})
 
 
 
