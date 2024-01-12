@@ -6,6 +6,10 @@ app.use("/public", express.static(__dirname + "/public"))
 //const handler = (req, res) => {
 //  res.send("Hello Express")
 //}
+app.use(function(req, res, next) {
+  console.log(`${req.method} ${req.path} - ${req.ip}`);
+  next()
+})
 const absolutePath = __dirname + '/views/index.html'
 app.get("/", (req, res) => {
   res.sendFile(absolutePath)
