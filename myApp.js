@@ -1,7 +1,8 @@
-// eslint-disable-next-line
 require("dotenv").config();
 let express = require('express');
 let app = express();
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
 //__dirname/public is mounted in /public dir of our website
 app.use("/public", express.static(__dirname + "/public"))
 //const handler = (req, res) => {
